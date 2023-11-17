@@ -4,11 +4,11 @@ import { todoTemplate, appTitle, content } from './todoTemplate.css';
 export default function TodoTemplate({
   children,
 }: {
-  children: React.JSX.Element[];
+  children: React.JSX.Element;
 }) {
   return (
     <div className={todoTemplate}>
-      <div className={appTitle}>Today's TODO</div>
+      <div className={appTitle}>Today's TODOs</div>
       <TodoInsert />
       <div className={content}>{children}</div>
     </div>
