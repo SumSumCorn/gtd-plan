@@ -1,10 +1,15 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import { OpenAI } from 'langchain/llms/openai';
 import { ChatOpenAI } from 'langchain/chat_models/openai';
+import TodoTemplate from './components/TodoTemplate';
+import TodoListItem from './components/TodoList';
 function App() {
   const [answer, setAnswer] = useState('');
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const chatModel = new ChatOpenAI({
+      openAIApiKey: import.meta.env['VITE_OPENAI_API_KEY'],
+    });
+  }, []);
 
   const generateJoke = async () => {
     const chatModel = new ChatOpenAI({
@@ -16,11 +21,16 @@ function App() {
 
     setAnswer(chatResult);
   };
+
   return (
     <div>
-      <div>test</div>
-      <button onClick={generateJoke}>click me!</button>
-      <div>{answer}</div>
+      <TodoTemplate>
+        <TodoListItem />
+        <TodoListItem />
+        <TodoListItem />
+        <TodoListItem />
+        <TodoListItem />
+      </TodoTemplate>
     </div>
   );
 }
