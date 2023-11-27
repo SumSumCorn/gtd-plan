@@ -1,16 +1,22 @@
 import { style } from '@vanilla-extract/css';
+import { myColors } from '../../app.css';
 
 export const todoTemplate = style({
-  width: 700,
-  marginLeft: 'auto',
-  marginRight: 'auto',
-  marginTop: '6rem',
   borderRadius: 4,
   outline: '1px solid #ededed',
+  border: 'dashed transparent 4px',
+  marginBottom: '2rem',
 });
 
+export const todoTemplateDrop = style([
+  todoTemplate,
+  {
+    borderColor: myColors.gray,
+  },
+]);
+
 export const appTitle = style({
-  background: '#19B75E',
+  background: myColors.green,
   color: 'white',
   height: '4rem',
   fontSize: '1.5rem',

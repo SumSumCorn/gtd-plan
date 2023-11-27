@@ -1,7 +1,9 @@
-import './App.css';
 import { ChatOpenAI } from 'langchain/chat_models/openai';
-import TodoContainer from './components/TodoContainer';
 import { useState, useEffect } from 'react';
+import Nav from './components/nav';
+import { app } from './app.css';
+import { Outlet } from 'react-router-dom';
+
 function App() {
   const [answer, setAnswer] = useState('');
 
@@ -23,8 +25,9 @@ function App() {
   };
 
   return (
-    <div>
-      <TodoContainer />
+    <div className={app}>
+      <Nav />
+      <Outlet />
     </div>
   );
 }

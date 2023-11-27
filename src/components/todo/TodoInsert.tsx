@@ -1,11 +1,17 @@
-import { useTodo } from '../hooks/useTodo';
+import { useTodo } from '../../hooks/useTodo';
 import { todoInsert, todoButton, todoInput } from './todoInsert.css';
 import { MdAdd } from 'react-icons/md';
 export default function TodoInsert() {
-  const { inputText, setInputText } = useTodo();
+  const { inputText, setInputText, createTodo } = useTodo();
 
   return (
-    <form className={todoInsert}>
+    <form
+      className={todoInsert}
+      onSubmit={(e) => {
+        e.preventDefault();
+        createTodo();
+      }}
+    >
       <input
         className={todoInput}
         placeholder='Have a faith'

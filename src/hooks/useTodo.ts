@@ -1,38 +1,28 @@
-import { useState } from 'react';
+import { useTodoStore } from '../store';
 
 export const useTodo = () => {
-  const [inputText, setInputText] = useState('');
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      text: '할일 1',
-    },
-    {
-      id: 2,
-      text: '할일 2',
-    },
-    {
-      id: 3,
-      text: '할일 3',
-    },
-  ]);
-  const createItem = () => {
-    setTodos([...todos, { id: todos.length + 1, text: inputText }]);
-    setInputText('');
-  };
+  const inputText = useTodoStore((state) => state.inputText);
+  const todos = useTodoStore((state) => state.todos);
 
-  const deleteItem = (index: number) => {
-    const newTodos = [...todos];
-    newTodos.splice(index, 1);
-    setTodos(newTodos);
+  const getTodos = (type: string) => {
+    return todos.filter((todo) => todo.type === type);
   };
+  const moveTodo = useTodoStore((state) => state.moveTodo);
+  const draggedTodo = useTodoStore((state) => state.draggedTodo);
+  const setDraggedTodo = useTodoStore((state) => state.setDraggedTodo);
 
+  const setInputText = useTodoStore((state) => state.setInputText);
+  const createTodo = useTodoStore((state) => state.createTodo);
+  const deleteTodo = useTodoStore((state) => state.deleteTodo);
   return {
     todos,
     inputText,
-    setTodos,
+    draggedTodo,
+    moveTodo,
     setInputText,
-    createItem,
-    deleteItem,
+    setDraggedTodo,
+    getTodos,
+    createTodo,
+    deleteTodo,
   };
 };

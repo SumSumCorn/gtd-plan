@@ -5,6 +5,7 @@ export const todoListItem = style({
   padding: '1.2rem',
   display: 'flex',
   alignItems: 'center',
+  cursor: 'move',
   selectors: {
     '&:nth-child(even)': {
       backgroundColor: '#e9e9e9',

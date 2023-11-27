@@ -10,4 +10,11 @@ export default defineConfig({
       emitCssInSsr: true,
     }),
   ],
+  // server: {
+  //   host: true,
+  //   port: 3000,
+  //   proxy: {
+
+  //   }
+  // }
 });
